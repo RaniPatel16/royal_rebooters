@@ -1,0 +1,514 @@
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* --- 1. Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4%; /* Padding top/bottom and left/right */
+    background-color: #fff;
+    border-bottom: 1px solid #000; /* Thin black line */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2.5rem; /* Space between links */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #3d8c40; /* Green on hover */
+}
+
+.login-btn {
+    background-color: #3d8c40;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #2a632c;
+}
+
+/* --- Resources Dropdown Styles --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 8px 0;
+    z-index: 1001;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+    white-space: nowrap;
+}
+
+/* This is the green hover effect you requested */
+.dropdown-content a:hover {
+    background-color: #d4e8d8; /* Light green background */
+    color: #3d8c40; /* Dark green text */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* --- 2. Job Details Banner --- */
+.job-banner {
+    width: 100%;
+    padding: 4rem 4%; /* Padding top/bottom and left/right */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                      url('https://images.pexels.com/photos/239975/pexels-photo-239975.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.job-details p {
+    color: #ffffff; /* White text */
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-weight: 300; /* Lighter weight for the value */
+}
+
+.job-details strong {
+    font-weight: 700; /* Bold weight for the label */
+}
+
+/* --- 3. Job Description & Form --- */
+.page-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem; /* Space between the two columns */
+    max-width: 1400px;
+    margin: 3rem auto; /* Add space above and below, and center */
+    padding: 0 4%; /* Match navbar padding */
+}
+
+.job-description {
+    flex-basis: 60%; /* Takes up 60% of the width */
+}
+
+.job-description h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.job-description h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3d8c40; /* Green color */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.job-description p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+.job-description ul {
+    list-style-position: inside; /* Keeps bullets aligned */
+    padding-left: 0;
+}
+
+.job-description li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.job-description strong {
+    font-weight: 700;
+    color: #000;
+}
+
+.apply-form {
+    flex-basis: 35%; /* Takes up 35% of the width */
+    max-width: 450px;
+}
+
+.apply-form h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3d8c40; /* Green color */
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.1rem;
+}
+
+.apply-form input[type="text"],
+.apply-form input[type="email"],
+.apply-form input[type="tel"] {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #3d8c40; /* Green border */
+    border-radius: 30px; /* Fully rounded pill shape */
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.apply-form input::placeholder {
+    color: #888;
+}
+
+.file-upload {
+    margin-top: 1.5rem;
+}
+
+.file-upload label {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.apply-form input[type="file"] {
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.apply-btn {
+    background-color: #3d8c40; /* Green */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 20px; /* Rounded shape */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin-top: 1.5rem;
+}
+
+.apply-btn:hover {
+    background-color: #2a632c; /* Darker green */
+}
+
+/* --- 4. "Only One App" Banner --- */
+.app-banner {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    gap: 3rem; 
+    background-color: #b0d37d; 
+    width: 100%;
+    padding: 1.5rem 5%; 
+    overflow: hidden; 
+    margin-top: 3rem; /* Add space above banner */
+}
+
+.banner-image {
+    flex-shrink: 0;
+}
+
+.banner-image img {
+    height: 280px; 
+    width: auto;
+    display: block; 
+    transform: translateY(15px); 
+}
+
+.banner-content {
+    flex-grow: 1; 
+    max-width: 500px; 
+    z-index: 2; 
+}
+
+.banner-content h1,
+.banner-content h2 {
+    color: #ffffff;
+    font-size: 2.75rem; 
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.banner-content h2 {
+    margin-bottom: 1.5rem; 
+}
+
+.banner-download-btn {
+    background-color: #3d8c40; 
+    color: white;
+    padding: 12px 28px;
+    border-radius: 25px; 
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    display: inline-block; 
+    transition: background-color 0.3s;
+}
+
+.banner-download-btn:hover {
+    background-color: #2a632c; 
+}
+
+/* --- 5. Footer --- */
+.footer-container {
+    width: 100%;
+    background-color: #f7f7f5; /* Light beige background */
+    padding-top: 4rem;
+    margin-top: 3rem; /* Add space above footer */
+}
+
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 2rem; 
+}
+
+.footer-column {
+    flex: 1; 
+    min-width: 250px; 
+}
+
+.footer-column.about p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.policy-links {
+    margin-bottom: 1.5rem;
+}
+
+.policy-links a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-right: 1.5rem;
+}
+
+.policy-links a:hover {
+    color: #3d8c40; 
+}
+
+.app-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.app-buttons img {
+    height: 40px; 
+}
+
+.footer-column.links h3 {
+    color: #3d8c40; 
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-column.links ul {
+    list-style: none;
+}
+
+.footer-column.links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-column.links a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-column.links a:hover {
+    color: #3d8c40;
+}
+
+.footer-logo img {
+    height: 45px; 
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    list-style: none;
+}
+
+.contact-info li {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-info i {
+    color: #3d8c40;
+    margin-right: 10px;
+    margin-top: 4px; 
+    width: 20px; 
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: #3d8c40;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: #2a632c; 
+}
+
+.footer-bottom {
+    background-color: #3d8c40;
+    color: white;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+.footer-bottom .copyright,
+.footer-bottom .designer {
+    margin: 5px 0;
+}
+
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 900px) {
+    .nav-menu {
+        display: none; /* Hide nav menu on tablet/mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .job-banner {
+        padding: 2rem 1.5rem;
+    }
+    .job-details p {
+        font-size: 1rem;
+    }
+
+    .page-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 0 1.5rem;
+        margin-top: 2rem;
+    }
+    .job-description,
+    .apply-form {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    .job-description h1 {
+        font-size: 1.8rem;
+    }
+    .job-description h2 {
+        font-size: 1.3rem;
+    }
+
+    .app-banner {
+        flex-direction: column-reverse; 
+        padding-top: 2rem;
+        padding-bottom: 0; 
+        text-align: center; 
+    }
+    .banner-image img {
+        height: 200px; 
+        transform: translateY(10px); 
+    }
+    .banner-content {
+        max-width: 100%;
+    }
+    .banner-content h1,
+    .banner-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        padding: 0 1.5rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

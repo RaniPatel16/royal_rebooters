@@ -1,0 +1,663 @@
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    overflow-x: hidden; /* Prevents horizontal scroll from animations */
+}
+
+/* --- NEW: Animation Styles --- */
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Start 30px down */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-section {
+    /* Set initial state for animation */
+    opacity: 0; 
+    animation: slideUpFadeIn 0.7s ease-out forwards;
+    
+    /* Add spacing between sections, replacing <br> tags */
+    margin-top: 3rem;
+}
+.page-section:first-child {
+    margin-top: 0;
+}
+
+/* Stagger the animations */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1.0s; }
+
+
+/* --- 1. Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* This spaces Logo (left) and nav-menu (right) */
+    align-items: center;
+    padding: 12px 5%; /* Padding top/bottom and left/right */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    position: sticky; /* Makes the nav sticky */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-image {
+    height: 40px; /* Adjust logo height as needed */
+    width: auto;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center; /* Vertically align nav items */
+    list-style: none; /* Removes bullet points */
+    gap: 30px; /* Space between links and login button */
+}
+
+.nav-menu li {
+    transition: transform 0.2s ease-out;
+}
+
+.nav-menu li:hover:not(.dropdown) {
+    transform: translateY(-2px); /* NEW: Hover lift animation */
+}
+
+.nav-menu li.dropdown {
+    position: relative; /* Establishes positioning context */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.nav-menu a:hover {
+    color: #3d8c40; /* Green on hover */
+}
+
+.login-btn {
+    background-color: #3d8c40; /* Green from logo */
+    color: white !important; /* Force white text */
+    padding: 10px 24px;
+    border-radius: 20px; /* Pill shape */
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap; /* Prevents text from breaking */
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #2a632c; /* Darker green on hover */
+    color: white !important;
+    transform: translateY(-2px); /* NEW: Hover lift animation */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Navbar Dropdown --- */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to its parent li */
+    top: 100%; /* Appears directly below the parent link */
+    left: 0;
+    background-color: #ffffff;
+    min-width: 160px; /* Ensures links aren't cramped */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Soft shadow */
+    border-radius: 8px; /* Slightly rounded edges */
+    padding: 8px 0; /* Padding top/bottom */
+    z-index: 1001; /* Sits on top of other content */
+}
+.dropdown-content li {
+    list-style: none;
+}
+.dropdown-content li:hover {
+    transform: none; /* Disable lift for dropdown items */
+}
+.dropdown-content a {
+    color: #333; /* Black text */
+    padding: 12px 16px; /* Padding for each link */
+    text-decoration: none;
+    display: block; /* Makes the entire area clickable */
+    white-space: nowrap; /* Prevents text wrap */
+}
+.dropdown-content a:hover {
+    color: #3d8c40; 
+    background-color: #d4e8d8; /* Light green background */
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* --- 2. "Come Join" Hero Content --- */
+.hero-content {
+    text-align: center;
+    padding: 5rem 1rem 3rem 1rem; /* Adjusted padding */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Large font size */
+    font-weight: 700;
+    background: linear-gradient(to right, #f0c141, #e4a726);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* --- 3. Image Slider --- */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+.slider-nav:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+.slider-nav.prev {
+    left: 1rem;
+}
+.slider-nav.next {
+    right: 1rem;
+}
+.slider-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.dot:hover {
+    opacity: 1;
+}
+.dot.active {
+    background-color: #3d8c40; /* Green for active dot */
+    opacity: 1;
+}
+
+
+/* --- 4. "Join Us" Card --- */
+.join-card {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #eee;
+    margin: 0 auto; /* Center the card */
+}
+.content-column {
+    flex: 1.5;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.brand-name {
+    color: #3d8c40;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.heading {
+    color: #222;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.content-column p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.image-column {
+    flex: 1;
+    background-color: #333;
+    overflow: hidden; /* NEW: Added for hover effect */
+}
+.image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease-out; /* NEW: Hover animation */
+}
+.join-card:hover .image-column img {
+    transform: scale(1.05); /* NEW: Zoom effect on card hover */
+}
+.apply-link-container {
+    text-align: center;
+}
+.apply-link {
+    color: #3d8c40;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.apply-link:hover {
+    color: #2a632c;
+}
+
+
+/* --- 5. Job Roles & Form --- */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 3rem auto 0 auto; /* Use margin-top, not padding */
+    padding: 0 3rem;
+}
+.jobs-column {
+    flex-basis: 35%;
+}
+.jobs-column h2 {
+    color: #3d8c40;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.job-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    max-width: 320px;
+    transition: all 0.3s ease-out; /* NEW: Hover animation */
+}
+.job-card:hover {
+    transform: translateY(-5px); /* NEW: Hover animation */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.job-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+.job-card .location {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+.form-column {
+    flex-basis: 60%;
+    max-width: 500px;
+}
+.form-group {
+    margin-bottom: 1.25rem;
+}
+.form-column input[type="text"],
+.form-column input[type="email"],
+.form-column input[type="tel"] {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #3d8c40;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: box-shadow 0.3s; /* NEW: Focus animation */
+}
+.form-column input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(61, 140, 64, 0.3); /* NEW: Focus animation */
+}
+.form-column input::placeholder {
+    color: #888;
+}
+.file-upload {
+    margin-top: 1rem;
+}
+.file-upload label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.apply-btn {
+    background-color: #3d8c40;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+}
+.apply-btn:hover {
+    background-color: #2a632c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.card-btn {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+.form-btn {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 1.1rem;
+}
+
+
+/* --- 6. "Global Vision" Banner --- */
+.hero-banner {
+    position: relative; 
+    height: 350px; 
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://images.pexels.com/photos/326012/pexels-photo-326012.jpeg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 16px; /* NEW: Rounded corners */
+    overflow: hidden; /* NEW: Clips the pseudo-element */
+    max-width: 1400px; /* NEW: Consistent max-width */
+    margin-left: auto; /* NEW: Center the banner */
+    margin-right: auto;
+    padding: 1rem; /* Add padding for small screens */
+}
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+}
+.hero-banner-content { 
+    position: relative; 
+    z-index: 2;
+    color: #ffffff; 
+}
+.hero-banner-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.hero-banner-content h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem; 
+}
+.cta-button {
+    background-color: #b0d37d; /* Light green from the image */
+    color: #333; 
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+.cta-button:hover {
+    background-color: #9cb96c; 
+    transform: translateY(-2px); /* NEW: Hover lift */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+/* --- 7. Footer --- */
+.footer-container {
+    width: 100%;
+    background-color: #f7f7f5;
+    padding-top: 4rem;
+}
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 2rem;
+}
+.footer-column {
+    flex: 1; 
+    min-width: 250px; 
+}
+.footer-column.about p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+.policy-links {
+    margin-bottom: 1.5rem;
+}
+.policy-links a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s;
+}
+.policy-links a:hover {
+    color: #3d8c40; 
+}
+.app-buttons {
+    display: flex;
+    gap: 1rem;
+}
+.app-buttons img {
+    height: 40px; 
+    transition: transform 0.3s; /* NEW: Hover animation */
+}
+.app-buttons img:hover {
+    transform: scale(1.05); /* NEW: Hover animation */
+}
+.footer-column.links h3 {
+    color: #3d8c40; 
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.footer-column.links ul {
+    list-style: none;
+}
+.footer-column.links li {
+    margin-bottom: 0.75rem;
+}
+.footer-column.links a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s; /* NEW: Hover animation */
+}
+.footer-column.links a:hover {
+    color: #3d8c40;
+}
+.footer-logo img {
+    height: 45px; 
+    margin-bottom: 1.5rem;
+}
+.contact-info {
+    list-style: none;
+}
+.contact-info li {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+}
+.contact-info i {
+    color: #3d8c40;
+    margin-right: 10px;
+    margin-top: 4px; 
+    width: 20px; 
+    text-align: center;
+}
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: #3d8c40;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+.social-icons a:hover {
+    background-color: #2a632c; 
+    transform: translateY(-3px); /* NEW: Hover animation */
+}
+.footer-bottom {
+    background-color: #3d8c40;
+    color: white;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+.footer-bottom .copyright,
+.footer-bottom .designer {
+    margin: 5px 0;
+}
+
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 900px) {
+    /* Hide desktop nav, you would add a hamburger menu icon here */
+    .nav-menu {
+        display: none; 
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-slider {
+        height: 300px;
+    }
+
+    .join-card {
+        flex-direction: column;
+        width: 95%;
+    }
+    .content-column {
+        padding: 2rem;
+    }
+    .image-column {
+        height: 250px;
+        order: -1; 
+    }
+    .heading {
+        font-size: 1.5rem;
+    }
+    .apply-link {
+        font-size: 1.25rem;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+    .jobs-column,
+    .form-column {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    .job-card {
+        max-width: 100%;
+    }
+
+    .hero-banner {
+        height: 250px; 
+        width: 95%; /* Match other cards */
+    }
+    .hero-banner-content h1 {
+        font-size: 1.8rem;
+    }
+    .hero-banner-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        padding: 0 1.5rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
