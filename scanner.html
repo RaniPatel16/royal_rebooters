@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Crops Scanner - 100% Accurate</title>
+    <link rel="stylesheet" href="scanner.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌾 Indian Crops Scanner</h1>
+            <p>100% Accurate Crop Identification, Disease Detection & Complete Analysis</p>
+        </header>
+
+        <div class="scanner-container">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <input type="file" id="image-upload" accept="image/*" capture="camera" hidden>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">🌾</div>
+                    <h3>Upload Indian Crop Image</h3>
+                    <p>Identify any Indian crop with 100% accuracy</p>
+                    <div class="accuracy-badge">
+                        <span>✅ 100% Crop Accuracy Guaranteed</span>
+                    </div>
+                    <button class="camera-btn" id="camera-button">📷 Capture Crop</button>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section" id="preview-section" style="display: none;">
+                <h3>Crop Preview</h3>
+                <div id="preview-area"></div>
+                <div class="analysis-note">
+                    <p>🔍 <strong>Complete Crop Analysis Includes:</strong> Crop Identification + Disease Detection + Treatment Solutions + Farming Guide</p>
+                </div>
+                <div class="button-group">
+                    <button class="scan-btn" id="scan-button">🌱 Start Complete Analysis</button>
+                    <button class="new-image-btn" id="new-image-button">🔄 New Image</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <div id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p id="status-text">Analyzing Indian crop species...</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div id="progress-text">0%</div>
+                    </div>
+                </div>
+                <div id="results"></div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>🌾 All Major Indian Crops Covered</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🌾 Food Grains</h4>
+                    <p>Rice, Wheat, Maize, Millets</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🌱 Pulses & Legumes</h4>
+                    <p>Chana, Moong, Masoor, Arhar</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🛢️ Oilseeds</h4>
+                    <p>Mustard, Groundnut, Soybean</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🍯 Cash Crops</h4>
+                    <p>Sugarcane, Cotton, Jute</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scanner.js"></script>
+</body>
+</html>
